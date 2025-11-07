@@ -397,7 +397,27 @@
     renderAuthorDashboard(){ const box=$('#authorComments'); if(!box) return; box.innerHTML=''; const entries=[]; const cm=this.user?.comments||{}; for(const sid in cm){ cm[sid].forEach(c=> entries.push({sid, ...c})) } if(!entries.length){ box.innerHTML='<p class="sub">Aún no hay comentarios de tus lectores.</p>'; return } entries.forEach((c)=>{ const row=el('div','tile'); row.innerHTML = `<div class='meta'><div class='title'>Historia #${c.sid} · Capítulo ${c.chapter}</div><div class='author'><strong>${c.author}</strong>: ${c.text}</div></div>`; const wrap=el('div','row'); const f=el('div','field'); const input=el('input'); input.placeholder='Escribe una respuesta como autor'; input.value=c.reply||''; const btn=el('button','btn purple','Responder'); btn.addEventListener('click',()=>{ const v=input.value.trim(); if(!v) return; const list=this.user.comments[c.sid]; const it=list.find(x=>x.chapter===c.chapter && x.text===c.text && x.author===c.author); if(it){ it.reply=v; this.persistUser(); toast('Respuesta guardada'); this.renderAuthorDashboard(); if(this.currentStory && this.current==='#lector') this.renderComments() } }); f.appendChild(input); wrap.appendChild(f); wrap.appendChild(btn); row.appendChild(wrap); box.appendChild(row) }) },
 
     // Monedas y apoyo
-    openSupport(){ if(!this.logged()){ toast('Inicia sesión para apoyar a creadores'); this.navigate('#login'); return } $('#apoyoAutor').textContent=this.currentStory?.autor||'creador'; $('#apoyoHistoria').textContent=this.currentStory?.titulo||'—'; $('#apoyoBalance').textContent=this.user.coins; this.navigate('#apoyo') },
+    openSupport(){
+      if(!this.logged()){
+        toast('Inicia sesión para apoyar a creadores');
+        this.navigate('#login');
+        return;
+      }
+      const autorEl = $('#apoyoAutor');
+      const historiaEl = $('#apoyoHistoria');
+      const balanceEl = $('#apoyoBalance');
+      if (!autorEl || !historiaEl || !balanceEl) {
+        toast('Error: la página de apoyo no está cargada.');
+        // Opcional: redirigir a la página de apoyo
+        const dest = routeMap['#apoyo'] || 'apoyo.html';
+        location.href = dest;
+        return;
+      }
+      autorEl.textContent = this.currentStory?.autor || 'creador';
+      historiaEl.textContent = this.currentStory?.titulo || '—';
+      balanceEl.textContent = this.user.coins;
+      this.navigate('#apoyo');
+    },
     updateCoinsUI(){ const bal=$('#coinBalance'); if(bal) bal.textContent=this.user?this.user.coins:0; const hdr=$('#hdrCoins'); if(hdr) hdr.textContent=this.user?this.user.coins:0 },
     earnFreeCoins(key){
       if(!this.logged()){ this.navigate('#login'); toast('Inicia sesión para reclamar'); return }
@@ -848,6 +868,7 @@ Ahora tengo una misión: encontrar qué está silenciando la canción de mi ciud
       });
     }
 
+
     // Si estamos en página de historia (historia.html), hidratar desde localStorage
     if($('#historia')){
       let story=null; try{ story = JSON.parse(localStorage.getItem('sn_current_story')||'null') }catch{}
@@ -870,6 +891,14 @@ Ahora tengo una misión: encontrar qué está silenciando la canción de mi ciud
         }
         app.renderFavBtn();
       }
+      // Enlazar botón de apoyo a creador si existe
+      const supportBtn = $('#supportBtn');
+      if(supportBtn) {
+        supportBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          if(app.openSupport) app.openSupport();
+        });
+      }
     }
 
     // Si estamos en creador.html preparar UI de publicación
@@ -878,6 +907,13 @@ Ahora tengo una misión: encontrar qué está silenciando la canción de mi ciud
       app.populateChapterStorySelect();
       // Comentarios recientes simulados
       const rc = $('#recentComments'); if(rc){ rc.innerHTML = ['Excelente primer capítulo','Me encantó el giro final','¿Cuándo sale el próximo?','Gran ambientación'].slice(0,4).map(t=>`<div>💬 ${t}</div>`).join('') }
+    }
+
+    // Si estamos en apoyo.html, mostrar la sección de apoyo si existe el hash o llamada directa
+    if($('#apoyo')) {
+      if(location.hash === '#apoyo' || location.pathname.endsWith('apoyo.html')) {
+        $('#apoyo').classList.remove('hidden');
+      }
     }
 
     // Si estamos en página de lector (lector.html), hidratar desde localStorage

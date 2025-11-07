@@ -42,6 +42,14 @@ header.top{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,#0
 .cta-creator{box-shadow:0 10px 30px rgba(110,56,255,.45)!important;animation:ctaPulse 1.8s ease-in-out infinite;transform-origin:center}
 @keyframes ctaPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 .chip{padding:6px 12px;border-radius:999px;background:var(--chip);border:1px solid var(--chip-b);font-size:13px;color:var(--ink)}
+.chip.active {
+  background: var(--primary);
+  color: var(--primary-ink);
+  border-color: var(--primary);
+  box-shadow: 0 2px 8px rgba(110,56,255,0.10);
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
 .coin{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid rgba(0,0,0,.08);padding:6px 10px;border-radius:999px;font-weight:700}
 .avatar{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid rgba(0,0,0,.08);padding:6px 10px;border-radius:999px;cursor:pointer}
 .dot{width:22px;height:22px;border-radius:50%;background:var(--primary)}
