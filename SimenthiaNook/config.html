@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Configuración · Smintheia Nook</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;600&family=Spline+Sans+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header class="top">
+  <div class="nav container">
+    <a class="brand" href="index.html"><img src="rataaaa.png" alt="Logo"> Smintheia Nook</a>
+    <div class="catmenu">
+      <form class="searchbar" id="searchForm">
+        <input id="q" placeholder="Busca por título, autor o etiqueta…" aria-label="Buscar">
+        <button class="btn" type="submit">Buscar</button>
+      </form>
+      <button class="btn" id="catBtn" type="button">Categorías ▾</button>
+      <div class="menu-panel" id="catPanel"><div class="badges" id="topCats"></div></div>
+    </div>
+    <div class="actions" id="headerActions"></div>
+  </div>
+</header>
+
+<main class="container">
+  <section id="config" data-screen>
+    <div class="hero-card">
+      <h2>⚙ Configuración</h2>
+      <p class="sub">Preferencias de la cuenta, apariencia y pagos.</p>
+    </div>
+
+    <section class="section">
+      <div class="section-title">Cuenta</div>
+      <div class="tile">
+        <div class="row">
+          <div class="field"><label>Nombre</label><input id="cfgName" placeholder="Tu nombre"></div>
+          <div class="field"><label>Correo</label><input id="cfgEmail" placeholder="tucorreo@ejemplo.com" disabled></div>
+          <div class="field"><label>Nueva contraseña</label><input id="cfgPass" type="password" placeholder="••••••••"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Foto de perfil</label>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div id="cfgAvatarContainer" style="width:64px;height:64px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;overflow:hidden;border:3px solid var(--primary)">
+                <img id="cfgAvatarPreview" alt="avatar" style="width:100%;height:100%;object-fit:cover;display:none">
+                <span id="cfgAvatarPlaceholder" style="font-size:28px;color:#fff">👤</span>
+              </div>
+              <input type="file" id="cfgPhotoFile" accept="image/*">
+              <div class="sub">Selecciona una imagen desde tu dispositivo.</div>
+            </div>
+          </div>
+        </div>
+        <div class="badges"><button class="btn purple" id="cfgSaveAccount">Guardar Cambios</button></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Apariencia</div>
+      <div class="tile">
+        <div class="row">
+          <div class="field"><label><input type="checkbox" id="cfgDark"> Modo oscuro</label></div>
+          <div class="field"><label>Tamaño de fuente</label>
+            <select id="cfgFont">
+              <option value="90">Pequeño</option>
+              <option value="100">Normal</option>
+              <option value="110">Grande</option>
+            </select>
+          </div>
+          <div class="field"><label>Densidad</label>
+            <select id="cfgDensity">
+              <option value="normal">Normal</option>
+              <option value="compact">Compacta</option>
+            </select>
+          </div>
+        </div>
+        <div class="sub">Los cambios de apariencia se aplican de inmediato para que puedas previsualizarlos.</div>
+        <div style="margin:16px 0;padding:14px;background:var(--chip);border-radius:12px;line-height:1.6">
+          <strong>Texto de muestra:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+        <div class="badges"><button class="btn purple" id="cfgSaveUI">Guardar cambios de apariencia</button></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Accesibilidad</div>
+      <div class="tile">
+        <div class="row">
+          <div class="field"><label><input type="checkbox" id="cfgHighContrast"> Alto contraste</label></div>
+          <div class="field"><label><input type="checkbox" id="cfgDyslexic"> Fuente accesible (dyslexic-friendly)</label></div>
+          <div class="field"><label>Interlineado</label>
+            <select id="cfgLineHeight">
+              <option value="1.2">1.2</option>
+              <option value="1.4">1.4 (recomendado)</option>
+              <option value="1.6">1.6</option>
+            </select>
+          </div>
+        </div>
+        <div class="sub">Los cambios de accesibilidad también se aplican al instante para que puedas valorar su efecto.</div>
+        <div style="margin:16px 0;padding:14px;background:var(--chip);border-radius:12px;line-height:1.6">
+          <strong>Texto de muestra:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </div>
+        <div class="badges"><button class="btn purple" id="cfgSaveUI_access">Guardar cambios de accesibilidad</button></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Pago</div>
+      <div class="tile">
+        <div class="row">
+          <div class="field"><label>Tarjeta guardada</label><input id="cfgCardMasked" disabled value="Sin tarjeta"></div>
+        </div>
+        <div class="row">
+          <div class="field" style="grid-column:1/-1"><label>Número de tarjeta</label><input id="cfgCardNumber" placeholder="4242 4242 4242 4242" maxlength="19"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Vencimiento</label><input id="cfgExpiry" placeholder="MM/AA" maxlength="5"></div>
+          <div class="field"><label>CVC</label><input id="cfgCVC" placeholder="123" maxlength="4"></div>
+        </div>
+        <div class="badges"><button class="btn purple" id="cfgSaveCard">Guardar tarjeta</button></div>
+      </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">Historial de compras</div>
+      <div class="tile">
+          <div class="field"><div id="cfgPurchases" style="max-height:200px;overflow-y:auto">—</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-title">Historial de lecturas</div>
+        <div class="tile">
+          <div class="field"><div id="cfgHistory" style="max-height:200px;overflow-y:auto">—</div></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div>
+      <div class="brand" style="color:#fff"><img src="rataaaa.png" alt="Logo"> Smintheia Nook</div>
+      <p class="sub">Un rincón para perderse entre historias. Hecho con amor morado.</p>
+    </div>
+    <div>
+      <h4>Compañía</h4>
+      <div class="sub"><a href="pages/legal/contacto.html">Contacto</a></div>
+      <div class="sub"><a href="pages/legal/ayuda.html">Ayuda</a></div>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <div class="sub"><a href="pages/legal/terminos.html">Términos</a></div>
+      <div class="sub"><a href="pages/legal/privacidad.html">Privacidad</a></div>
+      <div class="sub"><a href="pages/legal/derechos-autor.html">Derechos de autor</a></div>
+      <div class="sub"><a href="pages/legal/cookies.html">Cookies</a></div>
+    </div>
+    <div>
+      <h4>Creadores</h4>
+      <div class="sub"><button class="btn ghost btnInfoCreador">Información para creadores</button></div>
+      <div class="sub"><a href="#creador" data-goto="#creador">Centro de pagos</a></div>
+    </div>
+  </div>
+  <div class="copy">© 2025 Smintheia Nook</div>
+</footer>
+
+<!-- Modales reutilizados -->
+<div class="modal-mask payment-modal" id="payMask" role="dialog" aria-modal="true">
+  <div class="modal payment-modal-content">
+    <button class="payment-close" onclick="app.closePay()">✕</button>
+    <div class="payment-header">
+      <div class="payment-coin-animation">
+        <div class="coin">🪙</div>
+        <div class="coin">🪙</div>
+        <div class="coin">🪙</div>
+      </div>
+      <h2 style="margin:20px 0 10px;font-size:32px">¡Consigue tus monedas!</h2>
+      <p id="orderText" style="font-size:24px;font-weight:700;color:var(--primary)">120 monedas por $5.99</p>
+      <div class="payment-benefits">
+        <span class="benefit-chip">✓ Desbloquea capítulos</span>
+        <span class="benefit-chip">✓ Apoya creadores</span>
+        <span class="benefit-chip">✓ Sin suscripción</span>
+      </div>
+    </div>
+    <div class="body" style="padding:30px">
+      <div class="payment-secure">
+        <span style="font-size:20px">🔒</span>
+        <strong>Pago 100% seguro</strong>
+        <span class="sub">Procesado por Stripe</span>
+      </div>
+      <div class="field" style="margin-top:20px"><label>💳 Titular de la tarjeta</label><input placeholder="Como aparece en tu tarjeta" style="font-size:16px"></div>
+      <div class="row" style="margin-top:12px">
+        <div class="field" style="grid-column:1/-1"><label>Número de tarjeta</label><input placeholder="4242 4242 4242 4242" style="font-size:16px"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Vencimiento</label><input placeholder="MM/AA"></div>
+        <div class="field"><label>CVC</label><input placeholder="123"></div>
+        <div class="field"><label>🌍 País</label><input placeholder="México"></div>
+      </div>
+      <div style="text-align:center;margin-top:24px">
+        <button class="btn payment-btn-primary" onclick="app.finishPay(true)">
+          <span style="font-size:20px">💎</span> Completar compra
+        </button>
+        <button class="btn" onclick="app.finishPay(false)" style="margin-top:10px;font-size:12px">Simular error de pago</button>
+      </div>
+      <div class="payment-footer">
+        <p class="sub">Al confirmar, aceptas nuestros <a href="#">términos</a> y <a href="#">política de privacidad</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-mask" id="settingsMask">
+  <div class="modal">
+    <header class="nav container" style="grid-template-columns:1fr auto">
+      <div class="brand" style="color:var(--ink)"><img src="rataaaa.png" alt="L" style="width:28px;height:28px">Preferencias</div>
+      <button class="btn" id="closeSettingsBtn">Cerrar</button>
+    </header>
+    <div class="body">
+      <div class="row">
+        <div class="field"><label><input type="checkbox" id="toggleDark"> Modo oscuro</label></div>
+        <div class="field"><label>Tamaño de fuente</label><select id="fontScale"><option value="90">Pequeño</option><option value="100" selected>Normal</option><option value="110">Grande</option></select></div>
+        <div class="field"><label>Densidad</label><select id="density"><option value="normal">Normal</option><option value="compact">Compacta</option></select></div>
+      </div>
+      <div class="badges" style="margin-top:10px">
+        <button class="btn purple" id="saveSettingsBtn">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-mask" id="creatorInfoMask">
+  <div class="modal">
+    <header class="nav container" style="grid-template-columns:1fr auto">
+      <div class="brand" style="color:var(--ink)"><img src="rataaaa.png" alt="L" style="width:28px;height:28px">Información para creadores</div>
+      <button class="btn" id="closeCreatorInfoBtn">Cerrar</button>
+    </header>
+    <div class="body">
+      <p class="sub">Publica fácilmente, configura cobros y consulta estadísticas en tiempo real. Cumplimos con normativas fiscales locales y reportes transparentes.</p>
+      <ul>
+        <li>Guías de estilo y mejores prácticas editoriales</li>
+        <li>Programas de monetización por capítulos y propinas</li>
+        <li>Herramientas anti-spoiler y control de lanzamientos</li>
+        <li>Soporte dedicado por correo</li>
+      </ul>
+      <div class="badges"><button class="btn purple" onclick="app.createCreatorAccount()">Quiero publicar</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="assets/js/bundle.js"></script>
+</body>
+</html>

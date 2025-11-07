@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Registro de creador · Paso 3 · Directrices</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;600&family=Spline+Sans+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header class="top">
+  <div class="nav container">
+    <a class="brand" href="index.html"><img src="rataaaa.png" alt="Logo"> Smintheia Nook</a>
+    <div class="catmenu">
+      <form class="searchbar" id="searchForm">
+        <input id="q" placeholder="Busca por título, autor o etiqueta…" aria-label="Buscar">
+        <button class="btn" type="submit">Buscar</button>
+      </form>
+      <button class="btn" id="catBtn" type="button">Categorías ▾</button>
+      <div class="menu-panel" id="catPanel"><div class="badges" id="topCats"></div></div>
+    </div>
+    <div class="actions" id="headerActions"></div>
+  </div>
+</header>
+
+<main class="container">
+  <section id="creador-paso3" data-screen>
+    <div class="hero-card">
+      <h2>Paso 3/4 · Directrices y términos</h2>
+      <p class="sub">Mantén tu comunidad sana y evita problemas legales.</p>
+    </div>
+
+    <section class="section">
+      <div class="tile">
+        <ul>
+          <li>No se permite contenido ilegal ni que incite al odio.</li>
+          <li>Marca como +18 lo que corresponda y evita spoilers en títulos.</li>
+          <li>Respeta derechos de autor. Sube solo contenido propio.</li>
+        </ul>
+        <div class="row">
+          <div class="field"><label><input type="checkbox" id="agreeRules"> Acepto las directrices de contenido</label></div>
+          <div class="field"><label><input type="checkbox" id="agreePayments"> Acepto los términos de pago</label></div>
+        </div>
+        <div class="badges"><button class="btn" data-goto="#creador-paso2">Atrás</button><button class="btn purple" onclick="app.creatorStepNext(3)">Continuar</button></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div>
+      <div class="brand" style="color:#fff"><img src="rataaaa.png" alt="Logo"> Smintheia Nook</div>
+      <p class="sub">Un rincón para perderse entre historias. Hecho con amor morado.</p>
+    </div>
+    <div>
+      <h4>Compañía</h4>
+      <div class="sub"><a href="pages/legal/contacto.html">Contacto</a></div>
+      <div class="sub"><a href="pages/legal/ayuda.html">Ayuda</a></div>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <div class="sub"><a href="pages/legal/terminos.html">Términos</a></div>
+      <div class="sub"><a href="pages/legal/privacidad.html">Privacidad</a></div>
+      <div class="sub"><a href="pages/legal/derechos-autor.html">Derechos de autor</a></div>
+      <div class="sub"><a href="pages/legal/cookies.html">Cookies</a></div>
+    </div>
+  </div>
+  <div class="copy">© 2025 Smintheia Nook</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="assets/js/bundle.js"></script>
+</body>
+</html>

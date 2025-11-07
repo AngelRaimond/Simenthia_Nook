@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Información para creadores · Smintheia Nook</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;600&family=Spline+Sans+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header class="top">
+  <div class="nav container">
+    <a class="brand" href="index.html"><img src="rataaaa.png" alt="Logo"> Smintheia Nook</a>
+    <div class="catmenu">
+      <form class="searchbar" id="searchForm">
+        <input id="q" placeholder="Busca por título, autor o etiqueta…" aria-label="Buscar">
+        <button class="btn" type="submit">Buscar</button>
+      </form>
+      <button class="btn" id="catBtn" type="button">Categorías ▾</button>
+      <div class="menu-panel" id="catPanel"><div class="badges" id="topCats"></div></div>
+    </div>
+    <div class="actions" id="headerActions"></div>
+  </div>
+</header>
+
+<main class="container">
+  <section id="creador-info" data-screen>
+    <div class="hero-card">
+      <h2>💜 Gana dinero con tus historias</h2>
+      <p class="sub">Publica capítulos, recibe propinas en monedas y desbloqueos anticipados. Pagos transparentes y soporte dedicado.</p>
+    </div>
+
+    <section class="section">
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="tile">
+          <div class="meta">
+            <div class="title">Monetiza sin suscripción</div>
+            <div class="sub">Tus lectores te apoyan con monedas y desbloqueos por capítulo.</div>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="meta">
+            <div class="title">Herramientas editoriales</div>
+            <div class="sub">Programación de capítulos, control de spoilers y comentarios.</div>
+          </div>
+        </div>
+        <div class="tile">
+          <div class="meta">
+            <div class="title">Pagos claros</div>
+            <div class="sub">Reportes, tasas y calendario de cobro claros. Cumplimiento fiscal.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">Requisitos</div>
+      <div class="tile">
+        <ul>
+          <li>Ser mayor de 18 años.</li>
+          <li>Un correo válido para pagos.</li>
+          <li>Aceptar las directrices de contenido y términos de cobro.</li>
+        </ul>
+        <div class="badges"><button class="btn purple" data-goto="#creador-paso1">Comenzar registro</button></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div>
+      <div class="brand" style="color:#fff"><img src="rataaaa.png" alt="Logo"> Smintheia Nook</div>
+      <p class="sub">Un rincón para perderse entre historias. Hecho con amor morado.</p>
+    </div>
+    <div>
+      <h4>Compañía</h4>
+      <div class="sub"><a href="pages/legal/contacto.html">Contacto</a></div>
+      <div class="sub"><a href="pages/legal/ayuda.html">Ayuda</a></div>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <div class="sub"><a href="pages/legal/terminos.html">Términos</a></div>
+      <div class="sub"><a href="pages/legal/privacidad.html">Privacidad</a></div>
+      <div class="sub"><a href="pages/legal/derechos-autor.html">Derechos de autor</a></div>
+      <div class="sub"><a href="pages/legal/cookies.html">Cookies</a></div>
+    </div>
+    <div>
+      <h4>Creadores</h4>
+      <div class="sub"><a class="btn ghost" data-goto="#creador-paso1">Comenzar</a></div>
+      <div class="sub"><a href="#creador" data-goto="#creador">Centro de pagos</a></div>
+    </div>
+  </div>
+  <div class="copy">© 2025 Smintheia Nook</div>
+</footer>
+
+<!-- Modales reutilizados -->
+<div class="modal-mask payment-modal" id="payMask" role="dialog" aria-modal="true">
+  <div class="modal payment-modal-content">
+    <button class="payment-close" onclick="app.closePay()">✕</button>
+    <div class="payment-header">
+      <div class="payment-coin-animation">
+        <div class="coin">🪙</div>
+        <div class="coin">🪙</div>
+        <div class="coin">🪙</div>
+      </div>
+      <h2 style="margin:20px 0 10px;font-size:32px">¡Consigue tus monedas!</h2>
+      <p id="orderText" style="font-size:24px;font-weight:700;color:var(--primary)">120 monedas por $5.99</p>
+      <div class="payment-benefits">
+        <span class="benefit-chip">✓ Desbloquea capítulos</span>
+        <span class="benefit-chip">✓ Apoya creadores</span>
+        <span class="benefit-chip">✓ Sin suscripción</span>
+      </div>
+    </div>
+    <div class="body" style="padding:30px">
+      <div class="payment-secure">
+        <span style="font-size:20px">🔒</span>
+        <strong>Pago 100% seguro</strong>
+        <span class="sub">Procesado por Stripe</span>
+      </div>
+      <div class="field" style="margin-top:20px"><label>💳 Titular de la tarjeta</label><input placeholder="Como aparece en tu tarjeta" style="font-size:16px"></div>
+      <div class="row" style="margin-top:12px">
+        <div class="field" style="grid-column:1/-1"><label>Número de tarjeta</label><input placeholder="4242 4242 4242 4242" style="font-size:16px"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Vencimiento</label><input placeholder="MM/AA"></div>
+        <div class="field"><label>CVC</label><input placeholder="123"></div>
+        <div class="field"><label>🌍 País</label><input placeholder="México"></div>
+      </div>
+      <div style="text-align:center;margin-top:24px">
+        <button class="btn payment-btn-primary" onclick="app.finishPay(true)">
+          <span style="font-size:20px">💎</span> Completar compra
+        </button>
+        <button class="btn" onclick="app.finishPay(false)" style="margin-top:10px;font-size:12px">Simular error de pago</button>
+      </div>
+      <div class="payment-footer">
+        <p class="sub">Al confirmar, aceptas nuestros <a href="#">términos</a> y <a href="#">política de privacidad</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-mask" id="settingsMask">
+  <div class="modal">
+    <header class="nav container" style="grid-template-columns:1fr auto">
+      <div class="brand" style="color:var(--ink)"><img src="rataaaa.png" alt="L" style="width:28px;height:28px">Preferencias</div>
+      <button class="btn" id="closeSettingsBtn">Cerrar</button>
+    </header>
+    <div class="body">
+      <div class="row">
+        <div class="field"><label><input type="checkbox" id="toggleDark"> Modo oscuro</label></div>
+        <div class="field"><label>Tamaño de fuente</label><select id="fontScale"><option value="90">Pequeño</option><option value="100" selected>Normal</option><option value="110">Grande</option></select></div>
+        <div class="field"><label>Densidad</label><select id="density"><option value="normal">Normal</option><option value="compact">Compacta</option></select></div>
+      </div>
+      <div class="badges" style="margin-top:10px">
+        <button class="btn purple" id="saveSettingsBtn">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-mask" id="creatorInfoMask">
+  <div class="modal">
+    <header class="nav container" style="grid-template-columns:1fr auto">
+      <div class="brand" style="color:var(--ink)"><img src="rataaaa.png" alt="L" style="width:28px;height:28px">Información para creadores</div>
+      <button class="btn" id="closeCreatorInfoBtn">Cerrar</button>
+    </header>
+    <div class="body">
+      <p class="sub">Publica fácilmente, configura cobros y consulta estadísticas en tiempo real. Cumplimos con normativas fiscales locales y reportes transparentes.</p>
+      <ul>
+        <li>Guías de estilo y mejores prácticas editoriales</li>
+        <li>Programas de monetización por capítulos y propinas</li>
+        <li>Herramientas anti-spoiler y control de lanzamientos</li>
+        <li>Soporte dedicado por correo</li>
+      </ul>
+      <div class="badges"><button class="btn purple" data-goto="#creador-paso1">Quiero publicar</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="assets/js/bundle.js"></script>
+</body>
+</html>

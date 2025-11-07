@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Registro de creador · Paso 1 · Perfil público</title>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;600&family=Spline+Sans+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header class="top">
+  <div class="nav container">
+    <a class="brand" href="index.html"><img src="rataaaa.png" alt="Logo"> Smintheia Nook</a>
+    <div class="catmenu">
+      <form class="searchbar" id="searchForm">
+        <input id="q" placeholder="Busca por título, autor o etiqueta…" aria-label="Buscar">
+        <button class="btn" type="submit">Buscar</button>
+      </form>
+      <button class="btn" id="catBtn" type="button">Categorías ▾</button>
+      <div class="menu-panel" id="catPanel"><div class="badges" id="topCats"></div></div>
+    </div>
+    <div class="actions" id="headerActions"></div>
+  </div>
+</header>
+
+<main class="container">
+  <section id="creador-paso1" data-screen>
+    <div class="hero-card">
+      <h2>Paso 1/4 · Tu perfil público</h2>
+      <p class="sub">Así te verán tus lectores.</p>
+    </div>
+
+    <section class="section">
+      <div class="tile">
+        <div class="row">
+          <div class="field"><label>Nombre público</label><input id="step1DisplayName" placeholder="Como firmarás tus historias"></div>
+          <div class="field"><label>Género favorito</label>
+            <select id="step1Genre"><option>Romance</option><option>Fantasía</option><option>Terror</option><option>Misterio</option><option>No ficción</option></select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="field" style="grid-column:1/-1"><label>Bio</label><textarea id="step1Bio" placeholder="Preséntate (mínimo 30 caracteres)"></textarea></div>
+        </div>
+        <div class="badges"><button class="btn" data-goto="#creador-info">Atrás</button><button class="btn purple" onclick="app.creatorStepNext(1)">Continuar</button></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot">
+    <div>
+      <div class="brand" style="color:#fff"><img src="rataaaa.png" alt="Logo"> Smintheia Nook</div>
+      <p class="sub">Un rincón para perderse entre historias. Hecho con amor morado.</p>
+    </div>
+    <div>
+      <h4>Compañía</h4>
+      <div class="sub"><a href="pages/legal/contacto.html">Contacto</a></div>
+      <div class="sub"><a href="pages/legal/ayuda.html">Ayuda</a></div>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <div class="sub"><a href="pages/legal/terminos.html">Términos</a></div>
+      <div class="sub"><a href="pages/legal/privacidad.html">Privacidad</a></div>
+      <div class="sub"><a href="pages/legal/derechos-autor.html">Derechos de autor</a></div>
+      <div class="sub"><a href="pages/legal/cookies.html">Cookies</a></div>
+    </div>
+    <div>
+      <h4>Creadores</h4>
+      <div class="sub"><a class="btn ghost" data-goto="#creador-info">Regresar a información</a></div>
+    </div>
+  </div>
+  <div class="copy">© 2025 Smintheia Nook</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="assets/js/bundle.js"></script>
+</body>
+</html>
